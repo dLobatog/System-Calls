@@ -1,0 +1,62 @@
+File system calls
+ 	
+Description	
+------------
+  
+This package contains a set of tools for the manipulation of data extracted from binary files
+A binary file contains a sequence of records with the following fields:
+• Product name [52 bytes].
+• Weight [8 bytes]: value between 0.0 and 1000.0
+• Reference [4 bytes]: value between 0 and 1000.
+• Stock [4 bytes]: value between 0 and 1000.
+
+Tools
+-----
+  
+bin2text	
+  
+Converts a binary file to a text file. Each line in the text file 
+represents a product. The
+fields of a product record are separated by a tabulator (‘\t’).
+Use: ./bin2text <binary file> <text file>
+  
+text2bin	
+  
+Converts the text file to the binary file.
+Use:./text2bin <text file> <binary file>
+	
+  
+statistics	
+  
+Displays the following statistics about a binary file.
+Products with high availability (H): 500 <= stock <= 1000.
+Products with medium availability (M): 100 <= stock < 500.
+Products with low availability (L): 0 <= stock < 100
+Example:
+H: 38%
+M: 42%
+L: 20%
+Use:./statistics <binary file>
+
+
+combine	
+  
+Merges two binary file into a third file.
+Use:./combine <binary file 1> <binary file 2> <output binary
+file>
+	
+
+split	
+  
+Splits a binary file into two binary files with half number of products.
+Use: ./split <input binary file> <out binary file 1> <output
+binary file 2>
+filter	
+  
+Filters products according with stock. The filter is represented through 
+a char [H, M ,L]:
+H: high availability.
+M: medium availability.
+L: low availability.
+Use: ./filter [filter] <binary input file> <binary output
+file>
